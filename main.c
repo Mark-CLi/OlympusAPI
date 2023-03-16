@@ -4,8 +4,8 @@
 int main(void) {
     CURL *curl;
     CURLcode res;
-    char token[100];
-    char ID[100];
+    char token[100]; //token
+    char ID[100]; //player id
 
     printf("Enter token: "); //ask user for token input
     scanf("%s", token);
@@ -16,7 +16,7 @@ int main(void) {
     curl = curl_easy_init();
     if(curl) {
         char url[200];
-        sprintf(url, "https://stats.olympus-entertainment.com/api/v3.0/players/?player_ids=%s", ID);
+        sprintf(url, "https://stats.olympus-entertainment.com/api/v3.0/players/?player_ids=%s", ID); //add player   id to url
 
         struct curl_slist *headers = NULL;
         char auth_header[100];
