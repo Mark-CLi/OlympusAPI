@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <curl/curl.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <unistd.h>
+
+void Sleep(int i);
 
 int main(void) {
     CURL *curl;
@@ -10,20 +15,35 @@ int main(void) {
     char input[100]; //user input
     printf("Welcome to some ghetto ass API Poling Tool\n"); //welcome message
     printf("MCL 2022 All right reserved, olympus-entertainment.com/profile/47738-mark_/\n"); //welcome message
+    printf("Inproper use of this tool may result in a ban/other administrative action by oly Admin\n"); //Warning message
 
     while (1) {
-        printf("Enter feature (Server/Shed-ledger/Cartels/Players) or type 'stop' to exit: Caps Sensitives \n"); //ask user for feature input
+        printf("Enter feature (Server/Shed-ledger/Cartels/Players) ""Caps Sensitives" "or type 'stop' to exit:  \n"); //ask user for feature input
         scanf("%s", input);
 
         if (strcmp(input, "stop") == 0) {
             break;
+        } else {
+
         }
 
-        printf("Enter token(Visit Your Gang Profile on Oly Stats,DO NOT INCLUDE token):\n "); //ask user for token input
+        printf("Enter token(Visit Your Gang Profile on Oly Stats,DO NOT INCLUDE token at the beginning):\n "); //ask user for token input
         scanf("%s", token);
+
 
         printf("Enter Player ID/Shed ID\n"); //ask user for player id input
         scanf("%s", ID);
+
+        int i;
+
+        for (i = 0; ID[i] != '\0'; i++) {
+            if (!isdigit(ID[i])) {
+               printf("you did not enter a number,Below is message from API... exiting now(15s)\n");
+               break;
+           } else {
+               printf("Gathering Date Now...\n");
+           }
+       }
 
         curl = curl_easy_init(); //initialize curl
         if(curl) { //if curl is initialized
@@ -91,3 +111,6 @@ int main(void) {
 
     return 0;
 }
+
+
+
